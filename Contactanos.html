@@ -1,0 +1,507 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contáctanos</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .contact-form {
+      background: #fff;
+      padding: 30px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    .contact-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: none;
+    }
+
+    .form-group textarea {
+      height: 120px;
+    }
+
+    .form-group button {
+      width: 100%;
+      background: #4CAF50;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background: #45a049;
+    }
+
+    @media (max-width: 480px) {
+      .contact-form {
+        padding: 20px;
+      }
+    }
+  </style>
+    <style>
+/* Estilos de encabezado */
+/* Reset local al header */
+.tt-header *,
+.tt-header {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos generales del header */
+.tt-header {
+  font-family: Arial, sans-serif;
+  background-color: #FFF4D8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.tt-header-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tt-logo-menu-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.tt-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  z-index: 10;
+}
+
+.tt-logo {
+  width: 100%; /* O el tamaño específico que deseas */
+  max-width: 200px; /* Ajusta esto según el diseño */
+  margin-bottom: 5px;
+}
+
+.tt-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.tt-menu-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tt-menu-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.tt-menu-item {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333;
+  font-size: 12px;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.tt-menu-item:hover {
+  transform: scale(1.1);
+}
+
+.tt-menu-item img {
+  max-width: 30px;
+  margin-bottom: 5px;
+}
+
+/* Pantallas pequeñas (móviles y tabletas) */
+@media (max-width: 1027px) {
+  .tt-header {
+    padding-top: 70px;
+  }
+
+  .tt-logo-container {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .tt-logo {
+    max-width: 100px;
+  }
+
+  .tt-subtitle {
+    font-size: 12px;
+  }
+
+  .tt-logo-menu-container {
+    flex-direction: column;
+  }
+
+  .tt-menu-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .tt-menu-box {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .tt-menu-item {
+    font-size: 10px;
+  }
+
+  .tt-menu-item img {
+    max-width: 20px;
+  }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1028px) {
+  .tt-logo-menu-container {
+    height: 180px;
+    position: relative;
+  }
+
+  .tt-logo-container {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .tt-menu-container {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tt-menu-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+  }
+
+  .tt-menu-item {
+    font-size: 14px;
+  }
+
+  .tt-menu-item img {
+    max-width: 70px;
+  }
+}
+    </style>
+    <style>
+/* Estilo base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #FFF4D8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            padding: 0px;
+            text-align: center;
+            background-color: #FFF4D8;
+            color: white;
+        }
+        
+        main {
+            flex: 1;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+/* Estilos de pie de pagina */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #FEE7B1;
+            border-bottom: 20px solid #F86940;
+            margin-top: auto;
+            width: 100%;
+        }
+        
+        .footer-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 30px;
+            margin-right: 10px;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .facebook {
+            background-color: #3b5998;
+        }
+        
+        .twitter {
+            background-color: #1da1f2;
+        }
+        
+        .youtube {
+            background-color: #ff0000;
+        }
+        
+        .whatsapp {
+            background-color: #25d366;
+        }
+        
+        .contact-email {
+            font-size: 14px;
+            color: #333;
+        }
+
+
+        /* Media Queries para Responsive Design */
+        @media (max-width: 768px) {
+
+/* Estilos de pie de pagina responsivo*/
+            .footer {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .footer-left, .footer-right {
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .copyright {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Encabezado -->
+<div class="tt-header-container">
+    <header class="tt-header">
+        <div class="tt-logo-menu-container">
+            <div class="tt-logo-container">
+                <a href="Index.html" class="menu-item">
+                <img class="tt-logo" src="https://drive.google.com/thumbnail?id=19u00Nz1w-MgIUmQbGZnLZ_uyMq1hmgaj" alt="Logo">
+                <div class="tt-subtitle">ALIMÉNTATE CONSCIENTEMENTE</div>
+                </a>
+            </div>
+
+            <nav class="tt-menu-container">
+                <div class="tt-menu-box">
+                        <a href="Menu principal.html" class="tt-menu-item">
+                            <img src="https://drive.google.com/thumbnail?id=12BHneK61YiKBbe3PgYQbkH4Ckq60zeU_" alt="Icono Menú">                            
+                        </a>
+                        <a href="Web en construcción.html" class="tt-menu-item">
+                            <img src="https://drive.google.com/thumbnail?id=1ppwngAzGOXeu3IVTNPJ0LfpRyOzh4tiD" alt="Icono Blog">                            
+                        </a>
+                        <a href="Nosotros.html" class="tt-menu-item">
+                            <img src="https://drive.google.com/thumbnail?id=1DbH7_QhcEksXbgGEeBZ59lN9QsrbuPXX" alt="Icono Nosotros">                            
+                        </a>
+                        <a href="Contactanos.html" class="tt-menu-item">
+                            <img src="https://drive.google.com/thumbnail?id=1jM8BjZIPpmBvlPpvWghDEPdfqeWVs7iB" alt="Icono Contactanos">                            
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+</div>
+  <main>
+    <form class="contact-form">
+      <h2>Contáctanos</h2>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required />
+      </div>
+      <div class="form-group">
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" name="correo" required />
+      </div>
+      <div class="form-group">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" required></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </main>
+<!-- Pie de pagina -->
+
+    <footer class="footer">
+        <div class="footer-left">
+            <div class="logo">
+                <img src="https://drive.google.com/thumbnail?id=1fM_iYOuVT-tqTnFM2vW6zbgWUkaktxGy" alt="Logo">
+                <span class="copyright">Copyright © 2025. All rights reserved.</span>
+            </div>
+        </div>
+        <div class="footer-right">
+            <div class="social-icons">
+                <a href="#" class="social-icon facebook" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon twitter" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon youtube" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="#" class="social-icon whatsapp" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+            <div class="contact-email">clientes.tomatetomate@gmail.com</div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome para los íconos de redes sociales -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const prevButton = document.querySelector('.prev-button');
+            const nextButton = document.querySelector('.next-button');
+            
+            let currentIndex = 0;
+            
+            function showSlide(index) {
+                // Ocultar todos los slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Mostrar el slide actual
+                slides[index].classList.add('active');
+            }
+            
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            }
+            
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                showSlide(currentIndex);
+            }
+            
+            // Configurar los listeners de eventos
+            nextButton.addEventListener('click', nextSlide);
+            prevButton.addEventListener('click', prevSlide);
+            
+            // Auto-reproducción opcional del carrusel
+            // setInterval(nextSlide, 5000);
+        });
+    </script>
+
+</body>
+</html>

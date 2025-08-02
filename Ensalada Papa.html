@@ -1,0 +1,1294 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ensalada de Papa</title>
+  <style>
+    :root {
+      --color-principal: #ffe9ca;
+      --color-secundario: #ff6847;
+      --color-boton: #38a169;
+      --color-texto: #333;
+      --color-fondo-card: #fff3e0;
+      --borde-redondeado: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--color-principal);
+      color: var(--color-texto);
+      padding: 20px;
+    }
+
+    .contenedor-principal {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+    }
+
+    .imagen-ensalada {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+.imagen-principal {
+  width: 100%;
+  max-width: 350px; /* no tan ancha como antes */
+  height: 350px;     /* altura fija: hace que se vea redondita */
+  object-fit: cover; /* recorta lo que sobre y lo centra */
+  border-radius: 50%; /* hace que parezca un círculo */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+width: clamp(200px, 40vw, 350px);
+  height: clamp(200px, 40vw, 350px);
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.botones-modales {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-modal {
+  background-color: var(--color-secundario);
+  border: none;
+  padding: 12px 20px;
+  color: white;
+  border-radius: var(--borde-redondeado);
+  cursor: pointer;
+  min-width: 160px;  /* MISMO ancho mínimo para todos */
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  flex: 1 1 auto;
+transition: all 0.2s ease-in-out;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-modal:hover {
+  background-color: #e76f51;  /* Naranja más oscuro */
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cerrar-modal {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  z-index: 10;
+}
+
+.cerrar-modal:hover {
+  color: #000;
+}
+
+    .detalle-producto {
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 90px; /* 👈 Esto lo baja */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.detalle-producto h2 {
+  text-align: center;
+  margin-bottom: 16px; /* para separarlo del texto */
+}
+    .descripcion {
+      font-size: 0.95rem;
+    }
+.detalle-producto .descripcion {
+  text-align: justify;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+    .opciones-compra {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    select, input[type="number"] {
+      padding: 5px;
+      border-radius: var(--borde-redondeado);
+      border: 1px solid #ccc;
+    }
+
+    .btn-comprar {
+      background-color: var(--color-boton);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: var(--borde-redondeado);
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .acciones-secundarias {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .acciones-secundarias img {
+      width: 30px;
+    }
+
+    .redes-sociales {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-red {
+      background-color: #e2e8f0;
+      border: none;
+      padding: 6px 10px;
+      border-radius: var(--borde-redondeado);
+      cursor: pointer;
+    }
+
+    .flecha {
+      background-color: var(--color-secundario);
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+@media (min-width: 768px) {
+  .contenedor-principal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .imagen-ensalada,
+  .detalle-producto {
+    width: 48%;
+  }
+} /* 👈 no te olvides este cierre */
+
+@media (max-width: 767px) {
+  .imagen-ensalada,
+  .detalle-producto {
+    width: 100%;
+  }
+}
+
+#btn-carrito {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  border: none;
+  z-index: 999;
+  cursor: pointer;
+}
+
+#btn-carrito img {
+  width: 40px;
+  height: 40px;
+}
+
+@media (max-width: 768px) {
+  #btn-carrito {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+
+@keyframes aparecer {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes aparecer {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.contenedor-principal {
+  position: relative; /* Para que el carrito se posicione respecto al main */
+}
+
+.carrito-flotante {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.carrito-flotante button {
+  background-color: white;
+  border: none;
+  padding: 6px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.carrito-flotante img {
+  width: 24px;
+  height: 24px;
+}
+
+.selector-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.selector-cantidad button {
+  padding: 4px 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  background-color: #ddd;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.selector-cantidad span {
+  font-size: 16px;
+  min-width: 24px;
+  text-align: center;
+  display: inline-block;
+}
+
+.btn-comprar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #40A629; /* Verde original */
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-comprar .icono-carrito {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-comprar:hover {
+  background-color: #45a049; /* Verde un poco más oscuro */
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más grande */
+}
+
+.detalle-producto {
+  position: relative; /* clave para posicionamiento absoluto interno */
+  padding-bottom: 60px; /* espacio para que las redes no se superpongan */
+}
+
+.redes-sociales {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-red {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.btn-red:hover {
+  transform: scale(1.2);
+  background-color: #e0e0e0;
+}
+
+/* 👇 Corrección para móviles (pantallas pequeñas) */
+@media screen and (max-width: 480px) {
+  /* Modal más angosto en móvil */
+  .modal-contenido {
+    max-width: 95%;
+  }
+
+  /* Botones modales que ocupan todo el ancho */
+  .btn-modal {
+    min-width: auto;
+    width: 100%;
+  }
+
+  /* Ajustar espaciado del bloque producto */
+  .detalle-producto {
+    margin-top: 40px;
+    padding: 15px;
+  }
+
+  /* ✅ BOTÓN FLOTANTE más pequeño */
+  .carrito-flotante {
+    width: 50px;
+    height: 50px;
+  }
+
+  .carrito-flotante img {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* ✅ El botón verde se mantiene igual */
+  .btn-comprar {
+    padding: 10px 16px;
+    font-size: 16px;
+  }
+
+  .btn-comprar .icono-carrito {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Separación entre redes sociales y botón comprar */
+  #redes-sociales {
+    margin-bottom: 60px; /* espacio para que el botón no se solape */
+  }
+
+  /* O puedes ajustar el padding de toda la sección */
+  .detalle-producto {
+    padding-bottom: 80px; /* evita que el botón quede tapado por redes */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #redes-sociales {
+    position: fixed;
+    bottom: 80px; /* deja espacio para el botón verde */
+    right: 20px;
+    z-index: 99;
+  }
+}
+
+</style>
+<style>
+/* 🥗 Carrusel principal */
+.item-carrusel {
+  flex: 0 0 calc(20% - 12px);
+  border-radius: var(--borde-redondeado);
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-carrusel img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--color-secundario); /* Borde para que resalte */
+  margin-bottom: 6px;
+}
+
+.item-carrusel span {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+  background-color: transparent; /* fondo transparente */
+}
+
+.item-carrusel:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive: 3 en pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .item-carrusel {
+    flex: 0 0 calc(33.33% - 12px);
+    width: 55px;
+  }
+}
+.item-carrusel img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .item-carrusel span {
+    font-size: 0.8rem;
+  }
+
+
+.contenedor-carrusel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+.contenedor-carrusel::-webkit-scrollbar {
+  display: none; /* Oculta la barra de scroll */
+}
+.flecha {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  color: var(--color-secundario);
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.flecha:hover {
+  color: var(--color-principal);
+}
+.boton-carrusel {
+  background-color: transparent;
+  border: none;
+  font-size: 9rem;
+  cursor: pointer;
+  color: #D5343E;
+  transition: transform 0.2s ease, color 0.3s ease;
+  z-index: 10;
+}
+
+.boton-carrusel:hover {
+  transform: scale(1.3);
+  color: var(--color-secundario);
+}
+
+.carrusel-con-flechas {
+  display: flex;
+  align-items: center;
+}
+@media screen and (min-width: 769px) {
+  .item-carrusel img {
+    width: 80px;
+    height: 80px;
+  }
+@media screen and (max-width: 1024px) {
+    .item-carrusel {
+    flex: 0 0 calc(20% - 12px);
+    width: 80px;
+  }
+}
+
+  </style>
+  <style>
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 1rem;
+}
+
+.modal.mostrar {
+  display: flex;
+}
+
+.modal-contenido {
+  background-color: #fff;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ✅ Ajuste para pantallas medianas */
+@media screen and (max-width: 768px) {
+  .modal {
+    padding: 1.5rem;
+  }
+
+  .modal-contenido {
+    width: 100%;
+    max-width: 95%;
+  }
+}
+
+/* ✅ Ajuste para pantallas pequeñas */
+@media screen and (max-width: 480px) {
+  .modal-contenido {
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    font-size: 0.9rem;
+    padding: 16px;
+  }
+}
+@media screen and (min-width: 426px) and (max-width: 767px) {
+  .item-carrusel {
+    flex: 0 0 calc(50% - 12px); /* Solo 2 elementos por fila */
+  }
+}
+
+  </style>
+    <style>
+/* Estilos de encabezado */
+/* Reset local al header */
+.tt-header *,
+.tt-header {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos generales del header */
+.tt-header {
+  font-family: Arial, sans-serif;
+  background-color: #FFF4D8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.tt-header-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tt-logo-menu-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.tt-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  z-index: 10;
+}
+
+.tt-logo {
+  width: 100%; /* O el tamaño específico que deseas */
+  max-width: 200px; /* Ajusta esto según el diseño */
+  margin-bottom: 5px;
+}
+
+.tt-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.tt-menu-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tt-menu-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.tt-menu-item {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333;
+  font-size: 12px;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.tt-menu-item:hover {
+  transform: scale(1.1);
+}
+
+.tt-menu-item img {
+  max-width: 30px;
+  margin-bottom: 5px;
+}
+
+/* Pantallas pequeñas (móviles y tabletas) */
+@media (max-width: 1027px) {
+  .tt-header {
+    padding-top: 70px;
+  }
+
+  .tt-logo-container {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .tt-logo {
+    max-width: 100px;
+  }
+
+  .tt-subtitle {
+    font-size: 12px;
+  }
+
+  .tt-logo-menu-container {
+    flex-direction: column;
+  }
+
+  .tt-menu-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .tt-menu-box {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .tt-menu-item {
+    font-size: 10px;
+  }
+
+  .tt-menu-item img {
+    max-width: 20px;
+  }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1028px) {
+  .tt-logo-menu-container {
+    height: 180px;
+    position: relative;
+  }
+
+  .tt-logo-container {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .tt-menu-container {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tt-menu-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+  }
+
+  .tt-menu-item {
+    font-size: 14px;
+  }
+
+  .tt-menu-item img {
+    max-width: 70px;
+  }
+}
+    </style>
+    <style>
+/* Estilo base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #FFF4D8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            padding: 0px;
+            text-align: center;
+            background-color: #FFF4D8;
+            color: white;
+        }
+        
+        main {
+            flex: 1;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+/* Estilos de pie de pagina */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #FEE7B1;
+            border-bottom: 20px solid #F86940;
+            margin-top: auto;
+            width: 100%;
+        }
+        
+        .footer-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 30px;
+            margin-right: 10px;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .facebook {
+            background-color: #3b5998;
+        }
+        
+        .twitter {
+            background-color: #1da1f2;
+        }
+        
+        .youtube {
+            background-color: #ff0000;
+        }
+        
+        .whatsapp {
+            background-color: #25d366;
+        }
+        
+        .contact-email {
+            font-size: 14px;
+            color: #333;
+        }
+
+
+        /* Media Queries para Responsive Design */
+        @media (max-width: 768px) {
+
+/* Estilos de pie de pagina responsivo*/
+            .footer {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .footer-left, .footer-right {
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .copyright {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Encabezado -->
+<div class="tt-header-container">
+    <header class="tt-header">
+        <div class="tt-logo-menu-container">
+            <div class="tt-logo-container">
+                <a href="Index.html" class="menu-item">
+                <img class="tt-logo" src="https://drive.google.com/thumbnail?id=19u00Nz1w-MgIUmQbGZnLZ_uyMq1hmgaj" alt="Logo">
+                <div class="tt-subtitle">ALIMÉNTATE CONSCIENTEMENTE</div>
+                </a>
+            </div>
+
+            <nav class="tt-menu-container">
+                <div class="tt-menu-box">
+                        <a href="Menu principal.html" class="tt-menu-item">
+                            <img src="https://drive.google.com/thumbnail?id=12BHneK61YiKBbe3PgYQbkH4Ckq60zeU_" alt="Icono Menú">                            
+                        </a>
+                        <a href="Web en construcción.html" class="tt-menu-item">
+                            <img src="https://drive.google.com/thumbnail?id=1ppwngAzGOXeu3IVTNPJ0LfpRyOzh4tiD" alt="Icono Blog">                            
+                        </a>
+                        <a href="Nosotros.html" class="tt-menu-item">
+                            <img src="https://drive.google.com/thumbnail?id=1DbH7_QhcEksXbgGEeBZ59lN9QsrbuPXX" alt="Icono Nosotros">                            
+                        </a>
+                        <a href="Contactanos.html" class="tt-menu-item">
+                            <img src="https://drive.google.com/thumbnail?id=1jM8BjZIPpmBvlPpvWghDEPdfqeWVs7iB" alt="Icono Contactanos">                            
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+</div>
+  <main class="contenedor-principal">
+<!-- Botón flotante del carrito -->
+<div class="carrito-flotante">
+  <button id="btn-carrito">
+    <img src="https://drive.google.com/thumbnail?id=12UoQSmESqXOwyPbIvHBznrsQAO0Btl_u" alt="Carrito de compras">
+    <span id="contador-carrito">0</span> <!-- ✅ AGREGA ESTE SPAN -->
+    </button>
+</div>
+
+    <!-- Sección Imagen + Botones Modales -->
+    <section class="imagen-ensalada">
+      <img src="https://drive.google.com/thumbnail?id=1viTqOGCVjtIZHCNMhxORu0D5Y6OPPKr6" alt="Ensalada de papa" class="imagen-principal">
+      <div class="botones-modales">
+        <button class="btn-modal" id="btn-ingredientes">Ingredientes</button>
+        <button class="btn-modal" id="btn-acompanalo">Acompáñalo con</button>
+        <button class="btn-modal" id="btn-nutricion">Información nutricional</button>
+      </div>
+    </section>
+
+    <!-- Sección Detalles de Ensalada -->
+    <section class="detalle-producto">
+      <h2>ENSALADA DE PAPA</h2>
+      <p class="descripcion">
+        Suave, cremosa y con alma de comida casera. Cada bocado es como un abrazo disfrazado de frescura: tierna por dentro, alegre por fuera… y siempre lista para alegrarte el día.
+      </p>
+
+      <div class="opciones-compra">
+        <label for="tamano">Tamaño:</label>
+        <select id="tamano">
+          <option value="2000">Personal: 100 gr.</option>
+          <option value="3800">Dúo: 200 gr.</option>
+          <option value="5600">Trío: 300 gr.</option>
+        </select>
+
+<label for="cantidad">Cantidad:</label>
+<div class="selector-cantidad">
+  <button type="button" id="decrementar">-</button>
+  <span id="cantidad">1</span>
+  <button type="button" id="incrementar">+</button>
+</div>
+
+
+<button class="btn-comprar" onclick="agregarAlCarrito(this)">
+  <img src="https://drive.google.com/thumbnail?id=1iwocLY4VHYRXai657kyP82Qfb5dd-Rli" alt="Carrito" class="icono-carrito">
+  <span class="precio-boton">$ <span class="precio">2000</span></span>
+</button>
+
+      </div>
+<div class="acciones-secundarias">
+  <div class="redes-sociales">
+    <button class="btn-red">👍</button>
+    <button class="btn-red">❤️</button>
+    <button class="btn-red">🔗</button>
+  </div>
+</div>
+    </section>
+
+<!-- Sección Carrusel de productos -->
+<section class="carrusel">
+  <div class="carrusel-con-flechas">
+    <button id="btn-prev" class="boton-carrusel">&#8249;</button>
+
+    <div class="contenedor-carrusel" id="contenedor-carrusel">
+      	<a href="Ensalada Vegetal.html" class="item-carrusel">	
+        <img src="https://drive.google.com/thumbnail?id=1FK3vbyCeo8N3GGteel1GBAl1OPYGCb6u" alt="Vegetal" />
+        <span>Vegetal</span>
+	</a>
+      <a href="Ensalada Tropical.html" class="item-carrusel">
+        <img src="https://drive.google.com/thumbnail?id=1niOwiIeH4V37vj67CCjC91UZGWcazr8B" alt="Tropical" />
+        <span>Tropical</span>
+      </a>
+      <a href="Ensalada Papa.html" class="item-carrusel">
+        <img src="https://drive.google.com/thumbnail?id=1viTqOGCVjtIZHCNMhxORu0D5Y6OPPKr6" alt="Papa" />
+        <span>Papa</span>
+      </a>
+      <a href="Ensalada Roja.html" class="item-carrusel">
+        <img src="https://drive.google.com/thumbnail?id=1pLuDs5hobY3USvw0bpY1OgO9Pj9hNo4p" alt="Roja" />
+        <span>Roja</span>
+      </a>
+      <a href="Guacamole.html" class="item-carrusel">
+        <img src="https://drive.google.com/thumbnail?id=1aEsXcTEJd7_9_ks8equswCOTDDzoymXn" alt="Guacamole" />
+        <span>Guacamole</span>
+      </a>
+      <a href="Ensalada Hiposodica 1.html" class="item-carrusel">
+        <img src="https://drive.google.com/thumbnail?id=13b55jCap_zcV7mJPC7IxRYqGfngc4IPm" alt="Baja en sodio 1" />
+        <span>Baja en sodio 1</span>
+      </a>
+      <a href="Ensalada Hiposodica 2.html" class="item-carrusel">
+        <img src="https://drive.google.com/thumbnail?id=17ssULvbja-BC9MzG1wMnt3EY5yfd5abN" alt="Baja en sodio 2" />
+        <span>Baja en sodio 2</span>
+      </a>
+      <a href="Ensalada Hipocalorica 1.html" class="item-carrusel">
+        <img src="https://drive.google.com/thumbnail?id=1BAk5quZBc9V_ITZHYeSTP5OCpBsZ0U3s" alt="Baja en azucar 1" />
+        <span>Baja en azucar 1</span>
+      </a>
+      <a href="Ensalada Hipocalorica 2.html" class="item-carrusel">
+        <img src="https://drive.google.com/thumbnail?id=1s8_3Dn9uSq76hTDnm7BjKxmBuNaYgkgJ" alt="Baja en azucar 2" />
+        <span>Baja en azucar 2</span>
+      </a>
+    </div>
+
+    <button id="btn-next" class="boton-carrusel">&#8250;</button>
+  </div>
+</section>
+
+
+<!-- MODAL INGREDIENTES -->
+<div class="modal" id="modal-ingredientes">
+  <div class="modal-contenido">
+    <span class="cerrar-modal" data-close="#modal-ingredientes">&times;</span>
+    <h3>Ingredientes</h3>
+    <a href="https://drive.google.com/thumbnail?id=1WIHfU6NvgdfBkkHBjdxf_yIhK4LLgDQT"> <img src="https://drive.google.com/thumbnail?id=1WIHfU6NvgdfBkkHBjdxf_yIhK4LLgDQT" width="100%"/></a>
+  </div>
+</div>
+
+<!-- MODAL ACOMPAÑALO CON -->
+<div class="modal" id="modal-acompanalo">
+  <div class="modal-contenido">
+    <span class="cerrar-modal" data-close="#modal-acompanalo">&times;</span>
+    <h3>Acompáñalo con</h3>
+    <p>¡La combinación de ingredientes es refrescante y deliciosa! Para acompañar una ensalada con esos ingredientes, puedes considerar añadir algunos de estos elementos</p>
+    <a href="https://drive.google.com/thumbnail?id=10EJNZugts-FL-CvCk_cyn33Yx7-8WJ2c"> <img src="https://drive.google.com/thumbnail?id=10EJNZugts-FL-CvCk_cyn33Yx7-8WJ2c" width="100%"/></a>
+  </div>
+</div>
+
+<!-- MODAL INFORMACIÓN NUTRICIONAL -->
+<div class="modal" id="modal-nutricion">
+  <div class="modal-contenido">
+    <span class="cerrar-modal" data-close="#modal-nutricion">&times;</span>
+    <h3>Información nutricional</h3>
+    <a href="https://drive.google.com/thumbnail?id=1tNkNWqemgJmj5aQ5UOdb1chrdJrLp8em"> <img src="https://drive.google.com/thumbnail?id=1tNkNWqemgJmj5aQ5UOdb1chrdJrLp8em" width="100%"/></a>
+  </div>
+</div>
+
+<!-- ✅ MODAL AGREGADO AL CARRITO CON BOTONES -->
+<div class="modal" id="modal-agregado">
+  <div class="modal-contenido">
+    <span class="cerrar-modal" data-close="#modal-agregado">&times;</span>
+    <h3>✅ Producto agregado al carrito</h3>
+    <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+      <button id="seguir-comprando" class="btn-modal">Ver más productos</button>
+      <button id="ir-al-carrito" class="btn-comprar">Ir al carrito de compras</button>
+    </div>
+  </div>
+</div>
+  </main>
+<!-- Pie de pagina -->
+
+    <footer class="footer">
+        <div class="footer-left">
+            <div class="logo">
+                <img src="https://drive.google.com/thumbnail?id=1fM_iYOuVT-tqTnFM2vW6zbgWUkaktxGy" alt="Logo">
+                <span class="copyright">Copyright © 2025. All rights reserved.</span>
+            </div>
+        </div>
+        <div class="footer-right">
+            <div class="social-icons">
+                <a href="#" class="social-icon facebook" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon twitter" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon youtube" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="#" class="social-icon whatsapp" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+            <div class="contact-email">clientes.tomatetomate@gmail.com</div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome para los íconos de redes sociales -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // --- Precio y Cantidad ---
+  const btnIncrementar = document.getElementById('incrementar');
+  const btnDecrementar = document.getElementById('decrementar');
+  const spanCantidad = document.getElementById('cantidad');
+  const selectTamano = document.getElementById('tamano');
+  const precioEl = document.querySelector('.precio');
+  const btnResumen = document.getElementById('btn-carrito');
+  const contadorCarrito = document.getElementById('contador-carrito');
+
+  let cantidad = 1;
+
+  function actualizarPrecio() {
+    const precioUnitario = parseInt(selectTamano.value);
+    const total = precioUnitario * cantidad;
+    precioEl.textContent = total;
+    return total;
+  }
+
+  btnIncrementar?.addEventListener('click', () => {
+    cantidad++;
+    spanCantidad.textContent = cantidad;
+    actualizarPrecio();
+  });
+
+  btnDecrementar?.addEventListener('click', () => {
+    if (cantidad > 1) {
+      cantidad--;
+      spanCantidad.textContent = cantidad;
+      actualizarPrecio();
+    }
+  });
+
+  selectTamano?.addEventListener('change', actualizarPrecio);
+  actualizarPrecio();
+
+  btnResumen?.addEventListener('click', () => {
+    window.location.href = 'RP TT V2.html';
+  });
+
+  // --- Abrir modales informativos
+  const abrirModal = (idBoton, idModal) => {
+    const boton = document.getElementById(idBoton);
+    const modal = document.getElementById(idModal);
+    if (boton && modal) {
+      boton.addEventListener('click', () => modal.classList.add('mostrar'));
+      modal.addEventListener('click', e => {
+        if (e.target === modal) modal.classList.remove('mostrar');
+      });
+    }
+  };
+
+  abrirModal('btn-ingredientes', 'modal-ingredientes');
+  abrirModal('btn-acompanalo', 'modal-acompanalo');
+  abrirModal('btn-nutricion', 'modal-nutricion');
+
+  // Cerrar todos los modales informativos
+  document.querySelectorAll('.cerrar-modal').forEach(btn => {
+    const id = btn.getAttribute('data-close');
+    btn.addEventListener('click', () => {
+      const modal = document.querySelector(id);
+      if (modal) modal.classList.remove('mostrar');
+    });
+  });
+
+  // Carrusel funcional
+  const carrusel = document.getElementById('contenedor-carrusel');
+  const btnNext = document.getElementById('btn-next');
+  const btnPrev = document.getElementById('btn-prev');
+
+  if (carrusel) {
+    const items = Array.from(carrusel.querySelectorAll('.item-carrusel'));
+ 
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        items.forEach(i => i.classList.remove('activo'));
+        item.classList.add('activo');
+      });
+    });
+
+    function moverCarrusel(direccion) {
+      const item = carrusel.querySelector('.item-carrusel');
+      const itemWidth = item.offsetWidth + 12;
+      const scrollMax = carrusel.scrollWidth - carrusel.clientWidth;
+      const scrollActual = carrusel.scrollLeft;
+
+      if (direccion > 0 && scrollActual >= scrollMax - 1) {
+        carrusel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else if (direccion < 0 && scrollActual <= 0) {
+        carrusel.scrollTo({ left: scrollMax, behavior: 'smooth' });
+      } else {
+        carrusel.scrollBy({ left: direccion * itemWidth, behavior: 'smooth' });
+      }
+    }
+
+    carrusel.scrollLeft = 0;
+    btnNext?.addEventListener('click', () => moverCarrusel(1));
+    btnPrev?.addEventListener('click', () => moverCarrusel(-1));
+  }
+
+  // Activar ítems del menú
+  document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', function () {
+      document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('activo'));
+      this.classList.add('activo');
+    });
+  });
+});
+
+// --- Agregar al carrito y mostrar modal personalizado ---
+window.agregarAlCarrito = function (boton) {
+  const imagenSrc = document.querySelector('.imagen-principal')?.src || 'img/default.jpg';
+  const nombre = document.querySelector('.detalle-producto h2')?.textContent.trim() || "Producto sin nombre";
+  const tamaño = document.getElementById('tamano')?.selectedOptions[0]?.text.split(':')[0].trim() || "Personal";
+  const precioUnitario = parseInt(document.getElementById('tamano')?.value) || 0;
+  const cantidad = parseInt(document.getElementById('cantidad')?.textContent) || 1;
+
+  const nuevoProducto = { imagen: imagenSrc, nombre, tamaño, cantidad, precio: precioUnitario };
+  const pedidoActual = JSON.parse(localStorage.getItem("pedido")) || [];
+
+  const existente = pedidoActual.find(p => p.nombre === nombre && p.tamaño === tamaño);
+  if (existente) {
+    existente.cantidad += cantidad;
+  } else {
+    pedidoActual.push(nuevoProducto);
+  }
+
+  localStorage.setItem("pedido", JSON.stringify(pedidoActual));
+
+  const contadorCarrito = document.getElementById('contador-carrito');
+  contadorCarrito.textContent = parseInt(contadorCarrito.textContent) + cantidad;
+
+  mostrarModalAgregado();
+};
+
+// --- Crear y mostrar modal agregado ---
+function mostrarModalAgregado() {
+  let modal = document.getElementById('modal-agregado');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'modal-agregado';
+    modal.className = 'modal';
+    modal.innerHTML = `
+      <div class="modal-contenido">
+        <span id="cerrar-modal" style="position:absolute;top:10px;right:15px;font-size:20px;cursor:pointer;">&times;</span>
+        <h3>✅ Producto agregado al carrito</h3>
+        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+          <button id="seguir-comprando" class="btn-modal">Ver más productos</button>
+          <button id="ir-al-carrito" class="btn-comprar">Ir al carrito</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+  }
+
+  modal.classList.add('mostrar');
+  const contenidoModal = modal.querySelector('.modal-contenido');
+
+  // Cerrar al hacer clic fuera del contenido
+  modal.addEventListener('click', (e) => {
+    if (!contenidoModal.contains(e.target)) {
+      modal.classList.remove('mostrar');
+    }
+  });
+
+  // Botón "Ver más productos"
+  document.getElementById('seguir-comprando').onclick = () => {
+    modal.classList.remove('mostrar');
+  };
+
+  // Botón "Ir al carrito"
+  document.getElementById('ir-al-carrito').onclick = () => {
+    window.location.href = 'RP TT V2.html';
+  };
+
+  // Botón "❌"
+  document.getElementById('cerrar-modal').onclick = () => {
+    modal.classList.remove('mostrar');
+  };
+}
+
+</script>
+
+
+</body>
+</html>
+l-carrito').onclick = () => {
+    window.location.href = 'RP TT V2.html';
+  };
+
+  // Botón "❌"
+  document.getElementById('cerrar-modal').onclick = () => {
+    modal.classList.remove('mostrar');
+  };
+}
+
+</script>
+
+
+</body>
+</html>

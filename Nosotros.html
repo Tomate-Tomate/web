@@ -1,0 +1,712 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nosotros - Tómate Tomate</title>
+  <style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #FFF4D8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #444;
+}
+
+main.contenedor-principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1; /* Hace que main crezca y empuje el footer al fondo */
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+    .slider-container {
+      position: relative;
+      width: 90%;
+      max-width: 700px;
+      background: #FEE7B1;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 60px;
+      color: #3a9e33; /* Verde */
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin: 0 0 15px;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #111;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Controles flechas */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255 255 255 / 0.7);
+      border-radius: 50%;
+      border: none;
+      font-size: 24px;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+      user-select: none;
+    }
+    .arrow:hover {
+      background: #D5343E;
+      color: white;
+    }
+    .arrow-left {
+      left: 15px;
+    }
+    .arrow-right {
+      right: 15px;
+    }
+
+    /* Puntos de navegación */
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: #cbd5db;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .dot.active {
+      background: #3a9e33;
+    }
+
+    /* Texto de contador */
+    .counter {
+      margin-top: 15px;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media(max-width: 480px) {
+      .slider-container {
+        padding: 40px 20px;
+      }
+      .icon {
+        font-size: 45px;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+    <style>
+/* Estilos de encabezado */
+/* Reset local al header */
+.tt-header *,
+.tt-header {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos generales del header */
+.tt-header {
+  font-family: Arial, sans-serif;
+  background-color: #FFF4D8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.tt-header-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tt-logo-menu-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.tt-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  z-index: 10;
+}
+
+.tt-logo {
+  width: 100%; /* O el tamaño específico que deseas */
+  max-width: 200px; /* Ajusta esto según el diseño */
+  margin-bottom: 5px;
+}
+
+.tt-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.tt-menu-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tt-menu-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.tt-menu-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tt-menu-item:hover {
+  transform: scale(1.1);
+}
+
+.tt-menu-item img {
+  max-width: 30px;
+  margin-bottom: 0px;
+}
+
+/* Pantallas pequeñas (móviles y tabletas) */
+@media (min-width: 768px) and (max-width: 1027px) {
+  .tt-menu-item {
+    width: 100px;
+    height: 90px;
+    font-size: 14px;
+  }
+
+  .tt-menu-item img {
+    width: 50px;
+  }
+
+  .tt-menu-box {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 1027px) {
+  .tt-header {
+    padding-top: 70px;
+  }
+
+  .tt-logo-container {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .tt-logo {
+    max-width: 100px;
+  }
+
+  .tt-subtitle {
+    font-size: 12px;
+  }
+
+  .tt-logo-menu-container {
+    flex-direction: column;
+  }
+
+  .tt-menu-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .tt-menu-box {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .tt-menu-item {
+    font-size: 10px;
+  }
+
+  .tt-menu-item img {
+    max-width: 20px;
+  }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1028px) {
+  .tt-logo-menu-container {
+    height: 180px;
+    position: relative;
+  }
+
+  .tt-logo-container {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .tt-menu-container {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tt-menu-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+  }
+
+  .tt-menu-item {
+    font-size: 14px;
+  }
+
+  .tt-menu-item img {
+    max-width: 70px;
+  }
+}
+    </style>
+    <style>
+/* Estilo base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #FFF4D8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            padding: 0px;
+            text-align: center;
+            background-color: #FFF4D8;
+            color: white;
+        }
+        
+        main {
+            flex: 1;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+/* Estilos de pie de pagina */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #FEE7B1;
+            border-bottom: 20px solid #F86940;
+            margin-top: auto;
+            width: 100%;
+        }
+        
+        .footer-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 30px;
+            margin-right: 10px;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .facebook {
+            background-color: #3b5998;
+        }
+        
+        .twitter {
+            background-color: #1da1f2;
+        }
+        
+        .youtube {
+            background-color: #ff0000;
+        }
+        
+        .whatsapp {
+            background-color: #25d366;
+        }
+        
+        .contact-email {
+            font-size: 14px;
+            color: #333;
+        }
+
+
+        /* Media Queries para Responsive Design */
+        @media (max-width: 768px) {
+
+/* Estilos de pie de pagina responsivo*/
+            .footer {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .footer-left, .footer-right {
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .copyright {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Encabezado -->
+<div class="tt-header-container">
+    <header class="tt-header">
+        <div class="tt-logo-menu-container">
+            <div class="tt-logo-container">
+                <a href="Index.html" class="menu-item">
+                <img class="tt-logo" src="https://drive.google.com/thumbnail?id=19u00Nz1w-MgIUmQbGZnLZ_uyMq1hmgaj" alt="Logo">
+                <div class="tt-subtitle">ALIMÉNTATE CONSCIENTEMENTE</div>
+                </a>
+            </div>
+
+            <nav class="tt-menu-container">
+                <div class="tt-menu-box">
+                        <a href="Menu principal.html" class="tt-menu-item">
+                            <img src="https://drive.google.com/thumbnail?id=12BHneK61YiKBbe3PgYQbkH4Ckq60zeU_" alt="Icono Menú">                            
+                        </a>
+                        <a href="Web en construcción.html" class="tt-menu-item">
+                            <img src="https://drive.google.com/thumbnail?id=1ppwngAzGOXeu3IVTNPJ0LfpRyOzh4tiD" alt="Icono Blog">                            
+                        </a>
+                        <a href="Nosotros.html" class="tt-menu-item">
+                            <img src="https://drive.google.com/thumbnail?id=1DbH7_QhcEksXbgGEeBZ59lN9QsrbuPXX" alt="Icono Nosotros">                            
+                        </a>
+                        <a href="Contactanos.html" class="tt-menu-item">
+                            <img src="https://drive.google.com/thumbnail?id=1jM8BjZIPpmBvlPpvWghDEPdfqeWVs7iB" alt="Icono Contactanos">                            
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+<main class="contenedor-principal">
+  <div class="dots" id="dots"></div>
+
+  <div class="slider-container" role="region" aria-label="Información de la empresa">
+    <button class="arrow arrow-left" aria-label="Anterior">&lt;</button>
+
+    <div id="slideContent">
+      <!-- Aquí irá el contenido dinámico -->
+    </div>
+
+    <button class="arrow arrow-right" aria-label="Siguiente">&gt;</button>
+
+    <div class="counter" id="counter">1 de 4</div>
+  </div>
+  </main>
+<!-- Pie de pagina -->
+
+    <footer class="footer">
+        <div class="footer-left">
+            <div class="logo">
+                <img src="https://drive.google.com/thumbnail?id=1fM_iYOuVT-tqTnFM2vW6zbgWUkaktxGy" alt="Logo">
+                <span class="copyright">Copyright © 2025. All rights reserved.</span>
+            </div>
+        </div>
+        <div class="footer-right">
+            <div class="social-icons">
+                <a href="#" class="social-icon facebook" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon twitter" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon youtube" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="#" class="social-icon whatsapp" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+            <div class="contact-email">clientes.tomatetomate@gmail.com</div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome para los íconos de redes sociales -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+ <script>
+  const slides = [
+    {
+      icon: '🏠',
+      title: 'En Tómate Tomate',
+      text: 'Creemos que comer bien es solo el comienzo. Somos un emprendimiento que nace con el propósito de ofrecer alimentos frescos, funcionales y respetuosos con el cuerpo y con el planeta. Nos mueve la idea de que una alimentación saludable no tiene que ser aburrida ni costosa, y que cada pequeño cambio en nuestros hábitos puede generar un impacto positivo en el entorno. Desde la elección de ingredientes hasta el diseño de nuestro punto de venta, cuidamos cada detalle para ofrecer una experiencia que combina sabor, sostenibilidad y bienestar. Este proyecto comenzó como una iniciativa personal, impulsada por la pasión por la naturaleza, el deseo de crear soluciones recursivas y la convicción de que un negocio también puede enseñar, inspirar y transformar. Tómate Tomate es una invitación: a tomar decisiones más conscientes, a tomarte un momento para ti, y por qué no... a tomarte un buen jugo o una ensalada deliciosa mientras lo haces.'
+    },    
+    {
+      icon: '🚀',
+      title: 'Nuestra Misión',
+      text: 'En Tómate Tomate trabajamos para acercar a las personas a una alimentación saludable, práctica y con sentido. Ofrecemos ensaladas, jugos y productos frescos que no solo nutren el cuerpo, sino que también invitan a cuidar el entorno desde lo cotidiano. Nuestra misión es ser un punto de encuentro entre el sabor, la frescura y la sostenibilidad, promoviendo hábitos que respeten tanto a quienes los consumen como al planeta que habitamos.'
+    },
+    {
+      icon: '🤝',
+      title: 'Sostenibilidad',
+      text: 'En Tómate Tomate creemos que cada elección, por pequeña que sea, puede marcar una diferencia en el mundo. Por eso, la sostenibilidad guía todo lo que hacemos: desde reutilizar materiales hasta diseñar un punto de venta que cuida los recursos. Promovemos una alimentación que no solo nutre el cuerpo, sino que también respeta al planeta. Junto a esto, valoramos profundamente la salud integral, entendida como el equilibrio entre cuerpo, mente y entorno. Nos caracteriza la recursividad, que nos impulsa a crear con lo que tenemos a mano, y la cercanía, que se refleja en el trato cálido, humano y auténtico con quienes se acercan a nuestro proyecto. Actuamos con coherencia, buscando que nuestras acciones estén alineadas con lo que promovemos, y con respeto, entendiendo y valorando las diferencias de cada persona, sus elecciones y su proceso.'
+    },
+    {
+      icon: '🌍',
+      title: 'Visión Global',
+      text: 'Soñamos con un mundo en el que alimentarse bien sea fácil, cotidiano y responsable con el planeta. En Tómate Tomate trabajamos para convertirnos en una referencia local de alimentación saludable y sostenible, inspirando a más personas a tomar decisiones conscientes a través de lo que comen. Queremos ser más que un negocio: una propuesta de cambio desde lo simple, desde lo cercano, desde lo posible.'
+    }
+  ];
+
+  const slideContent = document.getElementById('slideContent');
+  const dotsContainer = document.getElementById('dots');
+  const counter = document.getElementById('counter');
+  const btnPrev = document.querySelector('.arrow-left');
+  const btnNext = document.querySelector('.arrow-right');
+  const slider = document.querySelector('.slider-container');
+
+  let currentIndex = 0;
+
+  function renderSlide(index) {
+    const slide = slides[index];
+    slideContent.innerHTML = `
+      <div class="icon" aria-hidden="true">${slide.icon}</div>
+      <h2>${slide.title}</h2>
+      <p>${slide.text}</p>
+    `;
+    counter.textContent = `${index + 1} de ${slides.length}`;
+    document.querySelectorAll('.dot').forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === index);
+    });
+  }
+
+  slides.forEach((_, idx) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (idx === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Ir a la diapositiva ${idx + 1}`);
+    dot.setAttribute('role', 'button');
+    dot.tabIndex = 0;
+    dot.addEventListener('click', () => {
+      currentIndex = idx;
+      renderSlide(currentIndex);
+    });
+    dot.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        currentIndex = idx;
+        renderSlide(currentIndex);
+      }
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+btnPrev.addEventListener('click', () => {
+  if (recentlySwiped) return; // Evita doble acción tras un swipe
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  renderSlide(currentIndex);
+});
+
+btnNext.addEventListener('click', () => {
+  if (recentlySwiped) return; // Evita doble acción tras un swipe
+  currentIndex = (currentIndex + 1) % slides.length;
+  renderSlide(currentIndex);
+});
+
+  // Soporte táctil
+  let startX = 0;
+  let endX = 0;
+  const threshold = 50; // px mínimo para reconocer swipe
+
+  slider.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  });
+
+  slider.addEventListener('touchmove', e => {
+    endX = e.touches[0].clientX;
+  });
+
+let recentlySwiped = false;
+
+slider.addEventListener('touchend', () => {
+  const diffX = endX - startX;
+  if (Math.abs(diffX) > threshold) {
+    if (diffX > 0) {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    } else {
+      currentIndex = (currentIndex + 1) % slides.length;
+    }
+    renderSlide(currentIndex);
+
+    recentlySwiped = true;
+    setTimeout(() => {
+      recentlySwiped = false;
+    }, 300); // Espera 300 ms antes de permitir otro evento
+  }
+  startX = 0;
+  endX = 0;
+});
+
+
+  // Soporte para arrastrar con mouse (PC)
+  let isDragging = false;
+  let mouseStartX = 0;
+  let mouseEndX = 0;
+
+  slider.addEventListener('mousedown', e => {
+    isDragging = true;
+    mouseStartX = e.clientX;
+  });
+
+  slider.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    mouseEndX = e.clientX;
+  });
+
+  slider.addEventListener('mouseup', e => {
+  if (!isDragging) return;
+  isDragging = false;
+
+  const diffX = (mouseEndX || e.clientX) - mouseStartX;
+
+  // Solo avanza si hubo arrastre real
+  if (Math.abs(diffX) > threshold) {
+    if (diffX > 0) {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    } else {
+      currentIndex = (currentIndex + 1) % slides.length;
+    }
+    renderSlide(currentIndex);
+  }
+
+  mouseStartX = 0;
+  mouseEndX = 0;
+});
+
+
+  slider.addEventListener('mouseleave', () => {
+    isDragging = false;
+  });
+
+  // Mostrar primera diapositiva
+  renderSlide(currentIndex);
+</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const prevButton = document.querySelector('.prev-button');
+            const nextButton = document.querySelector('.next-button');
+            
+            let currentIndex = 0;
+            
+            function showSlide(index) {
+                // Ocultar todos los slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Mostrar el slide actual
+                slides[index].classList.add('active');
+            }
+            
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            }
+            
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                showSlide(currentIndex);
+            }
+            
+            // Configurar los listeners de eventos
+            nextButton.addEventListener('click', nextSlide);
+            prevButton.addEventListener('click', prevSlide);
+            
+            // Auto-reproducción opcional del carrusel
+            // setInterval(nextSlide, 5000);
+        });
+    </script>
+</body>
+</html>
